@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { FetchOrderDataAsync, UserOrderSelector } from "../OrderSlice";
 
 import { UserSelector } from "../../auth/AuthSlice";
+import { Link } from "react-router-dom";
 
 const Order = () => {
   const UserSelectors = useSelector(UserSelector);
@@ -25,6 +26,9 @@ const Order = () => {
             Thanks for making a purchase you can check our order summary frm
             below
           </p>
+          <h2 class="font-manrope animate-bounce hover:font-medium  text-black text-center mb-6  ">
+            <Link to="/"> Go to home page</Link>
+          </h2>
           {OrderSel.map((order) => (
             <div class="main-box border border-gray-200 rounded-xl pt-6 max-w-xl max-lg:mx-auto lg:max-w-full mb-6">
               <div class="flex flex-col lg:flex-row lg:items-center justify-between px-6 pb-6 border-b border-gray-200">

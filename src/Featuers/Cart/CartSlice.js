@@ -92,7 +92,6 @@ const CartSlice = createSlice({
         const RemoveItem = state.UserCartData.filter(
           (item) => item._id !== action.payload._id
         );
-      
 
         state.UserCartData = RemoveItem;
         state.status = "fulfilled";

@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { BrowserUserSelector } from "../Browser/BrowserSlice";
 import { Link } from "react-router-dom";
 import AllProductDATA from "../Products/Components/AllProducts";
+import Footer from "../Navbar/Footer";
 // import { ClearSearch } from "../Products/ProductsSlice";
 
 const Home = () => {
@@ -44,6 +45,7 @@ const Home = () => {
         Top products
       </h1>
       <AllProductDATA />
+      <Footer />
     </div>
   );
 };

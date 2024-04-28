@@ -4,6 +4,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
 import { UserDataAsync, UserSelector } from "../auth/AuthSlice";
 import { OrderDataAsync } from "../Order/OrderSlice";
+import { toast } from "react-toastify";
+import { Link } from "react-router-dom";
 
 const CheckOut = () => {
   const [Addressed, setAddress] = useState();
@@ -34,6 +36,8 @@ const CheckOut = () => {
     // Dispatch NewOrder to an async function for further processing
     dispatch(OrderDataAsync(NewOrder));
     dispatch(CleanCart());
+
+    toast("Your Order conform");
   };
 
   const shipingcost = cartSelector.length * 3;
@@ -62,7 +66,6 @@ const CheckOut = () => {
       UserId: cartSelector[0].user,
     };
 
-    console.log(NewAddresses);
     dispatch(UserDataAsync(NewAddresses));
     reset();
   };
@@ -70,6 +73,7 @@ const CheckOut = () => {
     <div>
       <div className="flex flex-col items-center border-b bg-white py-4 sm:flex-row sm:px-10 lg:px-20 xl:px-32">
         <p className="text-2xl font-bold text-gray-800">sneekpeeks</p>
+
         <div className="mt-4 py-2 text-xs sm:mt-0 sm:ml-auto sm:text-base">
           <div className="relative">
             <ul className="relative flex w-full items-center justify-between space-x-2 sm:space-x-4">
@@ -143,6 +147,15 @@ const CheckOut = () => {
             Check your items. And select a suitable shipping method.
           </p>
           <div className="mt-8 space-y-3 rounded-lg border bg-white px-2 py-4 sm:px-6">
+            {cartSelector.length === 0 && (
+              <>
+                <Link to="/Order">
+                  <p className="text-xl font-semibold hover:text-red-500">
+                    Your Order page
+                  </p>
+                </Link>
+              </>
+            )}
             {cartSelector &&
               cartSelector.map((data) => (
                 <div className="flex flex-col rounded-lg bg-white sm:flex-row">

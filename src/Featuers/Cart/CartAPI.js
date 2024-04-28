@@ -11,6 +11,7 @@ export const UserCart = (CartData) => {
         if (!response.ok) {
           throw new Error("Network response was not ok");
         }
+
         return response.json();
       })
       .then((data) => {
@@ -35,7 +36,9 @@ export const CartDataById = (id) => {
 
 export const RemoveProduct = (id) => {
   return new Promise(async (resolve, reject) => {
-    const RemoveCart = await fetch("https://ecommersback-3.onrender.com/" + id);
+    const RemoveCart = await fetch(
+      "https://ecommersback-3.onrender.com/CartId/" + id
+    );
     const data = await RemoveCart.json();
     resolve(data);
   });

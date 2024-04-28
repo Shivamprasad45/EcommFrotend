@@ -31,7 +31,7 @@ export default function Navbar() {
             <img
               className="w-16 h-10"
               alt="Image2"
-              src="https://img.freepik.com/free-vector/gradient-hummingbird-logo-design_23-2149910287.jpg?w=740&t=st=1713755253~exp=1713755853~hmac=2c20150d5d39fd686fb6db7c6cc50e9b690ab25243179eb653ede02b1fc05bd9"
+              src="https://cdn.pixabay.com/photo/2021/07/21/14/51/logo-6483207_1280.png"
             />
           </div>
           <SearchProduct />

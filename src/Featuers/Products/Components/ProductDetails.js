@@ -18,10 +18,12 @@ import {
   UserHistoryAsync,
 } from "../../Browser/BrowserSlice";
 import { useForm } from "react-hook-form";
+import { toast } from "react-toastify";
 const ProductDetails = () => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm();
 
@@ -54,12 +56,14 @@ const ProductDetails = () => {
   //comment functions controllers
 
   const onSubmit = (data) => {
+    toast(`${data.name}  feedback  is very helpful `);
     dispatch(
       UserCommentAsync({
         Name: data.name,
         Comment: data.comment,
         ProductId: id,
-      })
+      }),
+      reset()
     );
   };
   useEffect(() => {
@@ -100,7 +104,7 @@ const ProductDetails = () => {
 
   const AddCart = (e) => {
     const ProductAlBuy = UserCart.find((data) => data.ProductId == id);
-
+    toast("Your product added successfully");
     //For incrise quantity of product
     if (ProductAlBuy) {
       dispatch(
@@ -120,22 +124,6 @@ const ProductDetails = () => {
       dispatch(AllUserCartAddAsync(newItem));
     }
   };
-  //Random comment color functions
-  // function getRandomColorFromLetter(letter) {
-  //   // Get the ASCII value of the letter
-  //   const asciiValue = letter.charCodeAt(0);
-
-  //   // Map the ASCII value to a color range
-  //   const colorValue = Math.floor((asciiValue / 26) * 16777215);
-
-  //   // Convert the color value to hexadecimal
-  //   const hexColor = colorValue.toString(16);
-
-  //   // Pad the hexadecimal color with zeros if necessary
-  //   const paddedHexColor = hexColor.padStart(6, "0");
-  //   console.log(paddedHexColor);
-  //   return "#" + paddedHexColor;
-  // }
 
   if (!ProductDelailes) {
     return <div>Loading...</div>; // Render loading indicator while data is being fetched
@@ -164,7 +152,7 @@ const ProductDetails = () => {
                             : ImageChangeset
                         }
                         alt={firstProduct.thumbnail}
-                        className="object-cover w-[80vw] h-[70vh] "
+                        className="  object-cover w-[80vw] h-[70vh] "
                       />
                     </div>
                     <div className="flex-wrap hidden md:flex ">
@@ -176,7 +164,8 @@ const ProductDetails = () => {
                               className="block border border-blue-300 dark:border-transparent dark:hover:border-blue-300 hover:border-blue-300"
                             >
                               <img
-                                onClick={(e) => ImageChange(data)}
+                                onMouseLeave={() => setImageChange("")}
+                                onMouseEnter={(e) => ImageChange(data)}
                                 src={data}
                                 alt=""
                                 className="object-cover w-full lg:h-20"
@@ -280,11 +269,6 @@ const ProductDetails = () => {
                           onClick={(e) => AddCart(e)}
                         >
                           Add to Cart
-                        </button>
-                      </div>
-                      <div className="w-full px-4 mb-4 lg:mb-0 lg:w-1/2">
-                        <button className="flex items-center justify-center w-full p-4 text-blue-500 border border-blue-500 rounded-md dark:text-gray-200 dark:border-blue-600 hover:bg-blue-600 hover:border-blue-600 hover:text-gray-100 dark:bg-blue-600 dark:hover:bg-blue-700 dark:hover:border-blue-700 dark:hover:text-gray-300">
-                          Add to wishlist
                         </button>
                       </div>
                     </div>

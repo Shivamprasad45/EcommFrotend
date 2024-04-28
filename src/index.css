@@ -29,3 +29,26 @@
   .Catogrery::-webkit-scrollbar-thumb:hover {
     background: linear-gradient(to right, #4682b4, #1e90ff); /* thumb color on hover */
   }
+
+
+  .magnifier-container {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .zoom-image {
+    display: block;
+    width: 100%;
+  }
+  
+  .magnifier {
+    position: absolute;
+    width: 200px; /* Adjust size of magnifier */
+    height: 200px; /* Adjust size of magnifier */
+    border: 1px solid #ccc; /* Magnifier border */
+    border-radius: 50%; /* Make magnifier circular */
+    background: rgba(255, 255, 255, 0.5); /* Magnifier background color */
+    pointer-events: none; /* Prevent magnifier from blocking mouse events */
+    display: none; /* Hide magnifier by default */
+  }
+  

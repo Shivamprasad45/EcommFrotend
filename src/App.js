@@ -5,7 +5,8 @@ import LoginPage from "./Featuers/Pages/LoginPage";
 import SignupPage from "./Featuers/Pages/SignupPage";
 import CartPage from "./Featuers/Pages/CartPage";
 import ProductDetails from "./Featuers/Products/Components/ProductDetails";
-
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import ErrorPage from "./Featuers/Pages/404";
 import ProductList from "./Featuers/Products/Components/ProductList";
 import Protected from "./Featuers/auth/Components/Protected";
@@ -16,7 +17,6 @@ import { UserSelector } from "./Featuers/auth/AuthSlice";
 import { FetchHistoryAsync } from "./Featuers/Browser/BrowserSlice";
 import {
   AllProductsAsync,
-
   fetchProductServecesAsync,
 } from "./Featuers/Products/ProductsSlice";
 import CheckOut from "./Featuers/Pages/CheckOut";
@@ -105,11 +105,11 @@ function App() {
       dispatch(FetchHistoryAsync(user.data._id));
       dispatch(fetchProductServecesAsync());
       dispatch(AllProductsAsync());
-      
     }
   }, [dispatch, user]);
   return (
     <div className=" ">
+      <ToastContainer />
       <RouterProvider router={route} />
     </div>
   );

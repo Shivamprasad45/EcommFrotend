@@ -41,16 +41,7 @@ const Cart = () => {
       <div className="h-screen bg-gray-100 pt-20">
         <h1 className="mb-10 text-center text-2xl font-bold">Cart Items</h1>
         <div className="mx-auto max-w-5xl justify-center  px-6 md:flex md:space-x-6 xl:px-0">
-          <div
-            style={{
-              backgroundImage: `url("https://images.unsplash.com/photo-1566438480900-0609be27a4be?q=80&w=1388&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")`,
-              backgroundRepeat: "no-repeat", // Optional: Adjust background repeat
-              backgroundSize: "cover", // Optional: Adjust background size
-              backgroundPosition: "center", // Optional: Adjust background position
-              overflowY: "auto", // Add vertical scroll to overflow content
-            }}
-            className="rounded-lg md:w-2/3 h-60 "
-          >
+          <div className="rounded-lg md:w-2/3 h-60 ">
             {cartdatabyId ? (
               cartdatabyId.map((cart) => (
                 <div
@@ -68,7 +59,7 @@ const Cart = () => {
                         {cart.title}
                       </h2>
                       <p className="mt-1 text-xs text-gray-700">
-                        {cart.Quantity}
+                        Quantity= {cart.Quantity}
                       </p>
                     </div>
                     <div className="mt-4 flex justify-between sm:space-y-6 sm:mt-0 sm:block sm:space-x-6">
