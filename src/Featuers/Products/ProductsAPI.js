@@ -30,10 +30,11 @@ export const fetchServicesList = (catoryName) => {
 };
 
 export const SearchProducts = (SearchData) => {
+ 
   return new Promise(async (resolve, reject) => {
     try {
       const response = await fetch(
-        `https://ecommersback-3.onrender.com/Search?SearchData= ${SearchData}`
+        `https://ecommersback-3.onrender.com/Search?SearchData=${SearchData}`
       );
 
       const data = await response.json();

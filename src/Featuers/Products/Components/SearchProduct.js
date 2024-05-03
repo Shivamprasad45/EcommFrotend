@@ -43,31 +43,30 @@ const SearchProduct = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2, duration: 0.5 }}
       >
-        {searchResults.length === 0
-          ? searchResults.map((product) => (
-              <motion.div
-                key={product._id}
-                className="flex justify-between transition delay-100 duration-300 ease-in-out rounded-sm lg:w-96 lg:h-14 md:h-12 h-10 md:w-56 w-36  bg-neutral-100 hover:bg-blue-100"
-                whileHover={{ scale: 1.05 }}
+        {searchResults &&
+          searchResults.map((product) => (
+            <motion.div
+              key={product._id}
+              className="flex justify-between transition delay-100 duration-300 ease-in-out rounded-sm lg:w-96 lg:h-14 md:h-12 h-10 md:w-56 w-36  bg-neutral-100 hover:bg-blue-100"
+              whileHover={{ scale: 1.05 }}
+            >
+              <Link
+                to={`${product.brand}/${product.id}`}
+                className="flex justify-start"
               >
-                <Link
-                  to={`${product.brand}/${product.id}`}
-                  className="flex justify-start"
-                >
-                  <div className="lg:w-96 lg:h-14 md:h-12 h-10 md:w-56 w-36  justify-start items-center gap-16 inline-flex">
-                    <img
-                      className=" w-10 h-7 "
-                      src={product.thumbnail}
-                      alt="ddf"
-                    />
-                    <div className=" text-black text-[8px]  md:text-[16px] font-normal font-['Khula']">
-                      {product.title}
-                    </div>
+                <div className="lg:w-96 lg:h-14 md:h-12 h-10 md:w-56 w-36  justify-start items-center gap-16 inline-flex">
+                  <img
+                    className=" w-10 h-7 "
+                    src={product.thumbnail}
+                    alt="ddf"
+                  />
+                  <div className=" text-black text-[8px]  md:text-[16px] font-normal font-['Khula']">
+                    {product.title}
                   </div>
-                </Link>
-              </motion.div>
-            ))
-          : ""}
+                </div>
+              </Link>
+            </motion.div>
+          ))}
       </motion.div>
     </div>
   );
