@@ -15,7 +15,7 @@ const ProductCatogery = () => {
   const ServiceCatagries = useSelector(ServiceProvideCatogry);
 
   return (
-    <div className="Catogrery  pt-5 Image w-full h-40 bg-white flex justify-between  space-x-7  snap-x items-center pl-4 overflow-x-auto overflow-y-hidden">
+    <div className="Catogrery   Image w-full h-28 md:h-40 bg-white flex justify-between  space-x-7  snap-x items-center pl-4 overflow-x-auto ">
       {ServiceCatagries &&
         ServiceCatagries.map((data) => (
           <Link to={`/${data.title}`}>
@@ -24,7 +24,7 @@ const ProductCatogery = () => {
               className="Frame5 w-14 h-20 flex-col justify-start cursor-pointer items-center snap-center  inline-flex"
             >
               <img
-                className="Rectangle4 w-14 h-16"
+                className="Rectangle4 w-10 h-10 md:w-16 md:h-16"
                 src={data.ImageSrc}
                 alt=""
               />

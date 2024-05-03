@@ -67,11 +67,11 @@ const ProfilePage = () => {
   };
 
   return (
-    <div className="max-w-3xl mx-auto px-4 py-8">
+    <div className="max-w-3xl mx-auto px-4 py-8 overflow-hidden">
       <h1 className="text-3xl font-bold mb-4">Profile Information</h1>
       <div className="bg-white rounded-lg shadow-md p-6 mb-6">
         <h2 className="text-xl font-semibold mb-4">User Information</h2>
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2  gap-4">
           <div>
             <p className="text-lg font-semibold">User ID:</p>
             <p>{userData._id}</p>
@@ -279,8 +279,12 @@ const ProfilePage = () => {
                 index !== address._id && (
                   <div key={address._id} className="mb-4">
                     <div className="flex justify-between items-center">
-                      <p className="text-lg font-semibold">Address ID:</p>
-                      <p>{address._id}</p>
+                      <p className="text-sm md:text-lg lg:text-xl xl:text-2xl font-semibold">
+                        Address ID:
+                      </p>
+                      <p className="text-xs sm:text-sm md:text-lg lg:text-xl xl:text-2xl">
+                        {address._id}
+                      </p>
                       <div
                         className="cursor-pointer"
                         onClick={() => Remove(address)}
@@ -305,44 +309,77 @@ const ProfilePage = () => {
                           fill="currentColor"
                           className="w-6 h-6 transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110 hover:text-indigo-500 duration-300"
                         >
-                          <path d="M21.731 2.269a2.625 2.625 0 0 0-3.712 0l-1.157 1.157 3.712 3.712 1.157-1.157a2.625 2.625 0 0 0 0-3.712ZM19.513 8.199l-3.712-3.712-12.15 12.15a5.25 5.25 0 0 0-1.32 2.214l-.8 2.685a.75.75 0 0 0 .933.933l2.685-.8a5.25 5.25 0 0 0 2.214-1.32L19.513 8.2Z" />
+                          <path
+                            className="cursor-pointer"
+                            d="M21.731 2.269a2.625 2.625 0 0 0-3.712 0l-1.157 1.157 3.712 3.712 1.157-1.157a2.625 2.625 0 0 0 0-3.712ZM19.513 8.199l-3.712-3.712-12.15 12.15a5.25 5.25 0 0 0-1.32 2.214l-.8 2.685a.75.75 0 0 0 .933.933l2.685-.8a5.25 5.25 0 0 0 2.214-1.32L19.513 8.2Z"
+                          />
                         </svg>
                       </div>
                     </div>
                     <div className="grid grid-cols-2 gap-4">
-                      <div>
-                        <p className="text-lg font-semibold">Email:</p>
-                        <p>{address.email}</p>
+                      <div className="flex flex-col">
+                        <p className="text-xs sm:text-sm md:text-lg lg:text-xl xl:text-2xl font-semibold">
+                          Email:
+                        </p>
+                        <p className="text-xs sm:text-sm md:text-lg lg:text-xl xl:text-2xl">
+                          {address.email}
+                        </p>
                       </div>
-                      <div>
-                        <p className="text-lg font-semibold">Card Holder:</p>
-                        <p>{address.CardHolder}</p>
+                      <div className="flex flex-col space-y-6 ">
+                        <p className="text-xs sm:text-sm md:text-lg lg:text-xl xl:text-2xl font-semibold">
+                          Card Holder:
+                        </p>
+                        <p className="text-xs sm:text-sm md:text-lg lg:text-xl xl:text-2xl">
+                          {address.CardHolder}
+                        </p>
                       </div>
-                      <div>
-                        <p className="text-lg font-semibold">Card Details:</p>
-                        <p>{address.Card_Details}</p>
+                      <div className="flex flex-col">
+                        <p className="text-xs sm:text-sm md:text-lg lg:text-xl xl:text-2xl font-semibold">
+                          Card Details:
+                        </p>
+                        <p className="text-xs sm:text-sm md:text-lg lg:text-xl xl:text-2xl">
+                          {address.Card_Details}
+                        </p>
                       </div>
-                      <div>
-                        <p className="text-lg font-semibold">Credit Expiry:</p>
-                        <p>{address.credit_expiry}</p>
+                      <div className="flex flex-col">
+                        <p className="text-xs sm:text-sm md:text-lg lg:text-xl xl:text-2xl font-semibold">
+                          Credit Expiry:
+                        </p>
+                        <p className="text-xs sm:text-sm md:text-lg lg:text-xl xl:text-2xl">
+                          {address.credit_expiry}
+                        </p>
                       </div>
-                      <div>
-                        <p className="text-lg font-semibold">Credit CVC:</p>
-                        <p>{address.credit_cvc}</p>
+                      <div className="flex flex-col">
+                        <p className="text-xs sm:text-sm md:text-lg lg:text-xl xl:text-2xl font-semibold">
+                          Credit CVC:
+                        </p>
+                        <p className="text-xs sm:text-sm md:text-lg lg:text-xl xl:text-2xl">
+                          {address.credit_cvc}
+                        </p>
                       </div>
-                      <div>
-                        <p className="text-lg font-semibold">
+                      <div className="flex flex-col">
+                        <p className="text-xs sm:text-sm md:text-lg lg:text-xl xl:text-2xl font-semibold">
                           Billing Address:
                         </p>
-                        <p>{address.billing_address}</p>
+                        <p className="text-xs sm:text-sm md:text-lg lg:text-xl xl:text-2xl">
+                          {address.billing_address}
+                        </p>
                       </div>
-                      <div>
-                        <p className="text-lg font-semibold">Billing State:</p>
-                        <p>{address.billing_state}</p>
+                      <div className="flex flex-col">
+                        <p className="text-xs sm:text-sm md:text-lg lg:text-xl xl:text-2xl font-semibold">
+                          Billing State:
+                        </p>
+                        <p className="text-xs sm:text-sm md:text-lg lg:text-xl xl:text-2xl">
+                          {address.billing_state}
+                        </p>
                       </div>
-                      <div>
-                        <p className="text-lg font-semibold">Billing ZIP:</p>
-                        <p>{address.billing_zip}</p>
+                      <div className="flex flex-col">
+                        <p className="text-xs sm:text-sm md:text-lg lg:text-xl xl:text-2xl font-semibold">
+                          Billing ZIP:
+                        </p>
+                        <p className="text-xs sm:text-sm md:text-lg lg:text-xl xl:text-2xl">
+                          {address.billing_zip}
+                        </p>
                       </div>
                     </div>
                   </div>

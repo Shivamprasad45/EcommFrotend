@@ -18,19 +18,21 @@ const Home = () => {
 
       {RecentlyVied.length > 0 && (
         <div>
-          <h1 className="text-2xl font-bold mb-4">Recently view product</h1>
+          <h1 className="text-2xl font-bold mb-4  pl-10 mt-2">
+            Recently view product
+          </h1>
 
           <div className="Catogrery overflow-x-auto  max-w-screen-lg mx-auto scroll">
             <div className="flex flex-row space-x-4">
               {RecentlyVied.map((data) => (
                 <Link
-                  to={`${data.brand} /${data.Id}`}
+                  to={`${data.brand}/${data.Id}`}
                   key={data._id}
-                  className="flex-shrink-0 w-64 bg-white rounded-lg shadow-md p-4"
+                  className="flex-shrink-0 w-full md:w-64 bg-white rounded-lg shadow-md p-4"
                 >
                   <img
                     src={data.thumbnail}
-                    className="w-full h-32 object-cover mb-4"
+                    className="w-full h-32 md:h-48 lg:h-56 object-cover mb-4"
                     alt={data.title}
                   />
 

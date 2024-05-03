@@ -13,21 +13,21 @@ const SearchProduct = () => {
 
   return (
     <div className="">
-      <div className="Group1 w-96 h-14   relative">
+      <div className="Group1 lg:w-96 lg:h-14 md:h-12 h-10 md:w-56 w-36   relative">
         <input
           onChange={(e) => handleSearch(e.target.value)}
-          className="Rectangle2 w-96 h-14 pl-28   left-0 top-0 bg-blue-50 rounded-lg"
+          className="Rectangle2 lg:w-96 lg:h-14 md:h-12 h-10 md:w-56 w-36  pl-8  md:pl-14 lg:pl-28 bg-blue-50 rounded-lg"
         />
-        <p className="absolute font-normal text-[12px] left-28 opacity-15 top-5">
+        <p className="absolute font-normal  text-[12px] md:text-[15px] lg:text-[20px] left-2 md:left-4  opacity-15 top-3">
           Search products and brand
         </p>
-        <div className="IcBaselineSearch w-16 h-14 pl-2 pr-2.5 pt-2 pb-2.5 left-[14px] top-[4px] absolute justify-center items-center inline-flex">
+        <div className="IcBaselineSearch w-8 h-10   left-[0px] top-[1px] md:top-2  md:left-2 absolute justify-center items-center inline-flex">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="1em"
             height="1em"
             viewBox="0 0 24 24"
-            className="sm:w-5 sm:h-4  w-8 h-7"
+            className="sm:w-5 sm:h-4  w-8 h-7 md:w-14 md:h-14"
           >
             <path
               fill="currentColor"
@@ -38,35 +38,36 @@ const SearchProduct = () => {
       </div>
 
       <motion.div
-        className="absolute mt-0 w-full bg-transparent border-gray-300 rounded-lg  shadow-lg z-10"
+        className="absolute mt-0  bg-transparent border-gray-300 rounded-lg lg:w-96 lg:h-14 md:h-12 h-10 md:w-56 w-36  shadow-lg z-10"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2, duration: 0.5 }}
       >
-        {searchResults &&
-          searchResults.map((product) => (
-            <motion.div
-              key={product._id}
-              className="flex justify-between transition delay-100 duration-300 ease-in-out rounded-sm w-96 h-10 bg-neutral-100 hover:bg-blue-100"
-              whileHover={{ scale: 1.05 }}
-            >
-              <Link
-                to={`${product.brand}/${product.id}`}
-                className="flex justify-start"
+        {searchResults.length === 0
+          ? searchResults.map((product) => (
+              <motion.div
+                key={product._id}
+                className="flex justify-between transition delay-100 duration-300 ease-in-out rounded-sm lg:w-96 lg:h-14 md:h-12 h-10 md:w-56 w-36  bg-neutral-100 hover:bg-blue-100"
+                whileHover={{ scale: 1.05 }}
               >
-                <div className=" w-60 h-12 justify-start items-center gap-16 inline-flex">
-                  <img
-                    className=" w-10 h-7"
-                    src={product.thumbnail}
-                    alt="ddf"
-                  />
-                  <div className=" text-black text-sm font-normal font-['Khula']">
-                    {product.title}
+                <Link
+                  to={`${product.brand}/${product.id}`}
+                  className="flex justify-start"
+                >
+                  <div className="lg:w-96 lg:h-14 md:h-12 h-10 md:w-56 w-36  justify-start items-center gap-16 inline-flex">
+                    <img
+                      className=" w-10 h-7 "
+                      src={product.thumbnail}
+                      alt="ddf"
+                    />
+                    <div className=" text-black text-[8px]  md:text-[16px] font-normal font-['Khula']">
+                      {product.title}
+                    </div>
                   </div>
-                </div>
-              </Link>
-            </motion.div>
-          ))}
+                </Link>
+              </motion.div>
+            ))
+          : ""}
       </motion.div>
     </div>
   );

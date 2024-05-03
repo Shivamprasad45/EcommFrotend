@@ -7,15 +7,18 @@ import { CiShop } from "react-icons/ci";
 import { FaRegUserCircle, FaShoppingCart } from "react-icons/fa";
 import { BsThreeDotsVertical } from "react-icons/bs";
 
-import { FaAngleDown } from "react-icons/fa6";
 import { useState } from "react";
 import { PopupUser } from "../Icons/NavIcons";
 import ProductCatogery from "../Products/Components/ProductCatogery";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/swiper-bundle.css";
+import { ServiceProvideCatogry } from "../Products/ProductsSlice";
 
+// import { FaAngleDown } from "react-icons/fa";
 export default function Navbar() {
   const cartLength = useSelector(UserCartSlector);
   const [hover, sethover] = useState(false);
-
+  const images = useSelector(ServiceProvideCatogry);
   const handleMouseEnter = () => {
     sethover(true);
   };
@@ -26,10 +29,10 @@ export default function Navbar() {
   return (
     <div className="overflow-x-hidden">
       <div className="  bg-[#e9e6e6]">
-        <div className="Frame4  w-full h-24  gap-8  sm:gap-3 items-center  justify-between  flex">
-          <div className="m-8 sm:m-6    w-16 h-10  ">
+        <div className="Frame4  w-full h-24  gap-6 sm:gap-12   items-center  justify-between  flex">
+          <div className=" w-full sm:w-12 md:w-20  pl-1 md:ml-6">
             <img
-              className="w-16 h-10"
+              className=" "
               alt="Image2"
               src="https://cdn.pixabay.com/photo/2021/07/21/14/51/logo-6483207_1280.png"
             />
@@ -85,7 +88,7 @@ export default function Navbar() {
                     </Link>
                   </>
                 ))}
-                <div class="Group6 invisible    md:visible  sm:visible  lg:invisible w-64 h-9 bg-white  relative">
+                <div class="Group6  w-64 h-9 bg-white  relative">
                   <Link to="/Cart">
                     <div class="Frame w-6 h-6 px-1 py-1 left-[13px] top-[6px] absolute justify-center items-center inline-flex">
                       <FaShoppingCart className="" />
@@ -103,19 +106,29 @@ export default function Navbar() {
       {/* ///App */}
       <ProductCatogery />
 
-      <section className="w-full h-56 relative">
-        <div className="absolute top-0 left-0 drop-shadow-md shadow-blue-400  py-8 my-16 pl-0 w-9 h-24 bg-white">
-          <FaAngleDown className="rotate-90 w-6 h-8" />
-        </div>
-        <div className="absolute top-0 right-0 drop-shadow-md shadow-blue-400 py-8 pl-3 my-16 pr-0 w-9 h-24 bg-white">
-          <FaAngleDown className="-rotate-90 w-6 h-8" />
-        </div>
-        <img
-          alt=""
-          className="w-full h-56"
-          src="https://i.ibb.co/M5kv3dW/Rectangle-5.png"
-        />
-      </section>
+      <Swiper
+        className="mySwiper"
+        spaceBetween={30}
+        slidesPerView={1}
+        navigation={{
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        }}
+      >
+        {images &&
+          images.map((image, index) => (
+            <SwiperSlide key={index}>
+              <div className="relative">
+                {/* Image */}
+                <img
+                  alt=""
+                  className="w-full h-40 md:h-56 lg:h-64 bg-cover"
+                  src={image.ImageSrc}
+                />
+              </div>
+            </SwiperSlide>
+          ))}
+      </Swiper>
     </div>
   );
 }
