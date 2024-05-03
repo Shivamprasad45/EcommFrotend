@@ -15,12 +15,11 @@ const SearchProduct = () => {
     <div className="">
       <div className="Group1 lg:w-96 lg:h-14 md:h-12 h-10 md:w-56 w-36   relative">
         <input
+          placeholder="Search your Products"
           onChange={(e) => handleSearch(e.target.value)}
           className="Rectangle2 lg:w-96 lg:h-14 md:h-12 h-10 md:w-56 w-36  pl-8  md:pl-14 lg:pl-28 bg-blue-50 rounded-lg"
         />
-        <p className="absolute font-normal  text-[12px] md:text-[15px] lg:text-[20px] left-2 md:left-4  opacity-15 top-3">
-          Search products and brand
-        </p>
+
         <div className="IcBaselineSearch w-8 h-10   left-[0px] top-[1px] md:top-2  md:left-2 absolute justify-center items-center inline-flex">
           <svg
             xmlns="http://www.w3.org/2000/svg"
